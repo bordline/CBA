@@ -1,0 +1,11 @@
+﻿<div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
+        <div id="table-container" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 table-responsive">
+        </div>
+    </div>
+</div>
+<script>
+    var access_token = angular.injector(['LoanApp']).get("$localStorage").get('access_token');
+    React.render(React.createElement(LoanTypeTable, { api: 'api/LoanType', token: access_token }), document.getElementById('table-container'));
+</script>
