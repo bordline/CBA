@@ -112,6 +112,7 @@
     <Content Include="Scripts\AngularPrj\Service\Customer.Service.js" />
     <Content Include="Scripts\AngularPrj\Service\LoanCalculator.Service.js" />
     <Content Include="Scripts\AngularPrj\Service\AspNetUserService.js" />
+    <Content Include="Scripts\AngularPrj\Service\LoanTypeService.js" />
     <Content Include="Scripts\AngularPrj\Service\LocalStorage.Service.js" />
     <Content Include="Scripts\jasmine-samples\Player.js" />
     <Content Include="Scripts\jasmine-samples\PlayerSpec.js" />

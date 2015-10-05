@@ -1,27 +1,33 @@
 ﻿///<reference path="../../react.js" />
 
-var URL = 'http://localhost:51361/';
-
 var LoanTypeTable = React.createClass({
     getInitialState : function () {
         return {data : []};
     },
     componentDidMount : function(){
-        $.ajax({
-            type: 'GET',
-            url: URL + this.props.api,
-            dataType: 'json',
-            cache: false,
-            headers: { 'Authorization': 'Bearer ' + this.props.token},
-            success: function (data)
-            {
-                console.log("successfully received data from web");
-                this.setState({data: data})
-            }.bind(this),
-            error: function (xhr, status, err){
-                console.error(URL + this.props.api, status, err.toString());
-            }.bind(this)
+        angular.injector(['ng', 'LoanApp']).get("LoanTypeService").getLoanTypes().then(function(data){
+            console.log("successfully received data from web");
+            this.setState(data);
+        }.bind(this))
+        .catch(function (errorResults) {
+            //to do for not found here
         });
+
+        //$.ajax({
+        //    type: 'GET',
+        //    url: URL + this.props.api,
+        //    dataType: 'json',
+        //    cache: false,
+        //    headers: { 'Authorization': 'Bearer ' + this.props.token},
+        //    success: function (data)
+        //    {
+        //        console.log("successfully received data from web");
+        //        this.setState({data: data})
+        //    }.bind(this),
+        //    error: function (xhr, status, err){
+        //        console.error(URL + this.props.api, status, err.toString());
+        //    }.bind(this)
+        //});
     },
     render: function () {
         var rows = [];
