@@ -5,29 +5,9 @@ var LoanTypeTable = React.createClass({
         return {data : []};
     },
     componentDidMount : function(){
-        angular.injector(['ng', 'LoanApp']).get("LoanTypeService").getLoanTypes().then(function(data){
-            console.log("successfully received data from web");
-            this.setState(data);
-        }.bind(this))
-        .catch(function (errorResults) {
-            //to do for not found here
-        });
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: URL + this.props.api,
-        //    dataType: 'json',
-        //    cache: false,
-        //    headers: { 'Authorization': 'Bearer ' + this.props.token},
-        //    success: function (data)
-        //    {
-        //        console.log("successfully received data from web");
-        //        this.setState({data: data})
-        //    }.bind(this),
-        //    error: function (xhr, status, err){
-        //        console.error(URL + this.props.api, status, err.toString());
-        //    }.bind(this)
-        //});
+        SetListener(this._onChange);
+        getData();
+        //setInterval(this.loadData, 60000);
     },
     render: function () {
         var rows = [];
@@ -45,7 +25,10 @@ var LoanTypeTable = React.createClass({
                 <tbody>{rows}</tbody>
             </table>    
         );
-}
+    },
+    _onChange: function(data){
+        this.setState(data);
+    }
 });
 
 var LoanTypeRow = React.createClass({
@@ -59,4 +42,4 @@ var LoanTypeRow = React.createClass({
     }
 });
 
-React.render(<LoanTypeTable />, document.getElementById('table-container'));
+//React.render(<LoanTypeTable />, document.getElementById('table-container'));
