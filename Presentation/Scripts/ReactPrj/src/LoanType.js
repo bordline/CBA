@@ -58,3 +58,5 @@ var LoanTypeRow = React.createClass({
             );
     }
 });
+
+React.render(<LoanTypeTable />, document.getElementById('table-container'));
