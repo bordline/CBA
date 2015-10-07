@@ -5,9 +5,11 @@ var LoanTypeTable = React.createClass({
         return {data : []};
     },
     componentDidMount : function(){
-        SetListener(this._onChange);
-        getData();
+        AddListener("LoanTypeTable", this._onChange);
         //setInterval(this.loadData, 60000);
+    },
+    componentWillUnmount : function(){
+        RemoveListener("LoanTypeTable");
     },
     render: function () {
         var rows = [];
